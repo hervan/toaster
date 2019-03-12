@@ -4,7 +4,7 @@
 
 A notification component that can be invoked from a single function call (no setup required), showing a message to the user in a corner of the screen.
 
-`addToast(message, position, type)`
+`toast(message, position, type)`
 
 `message` is the content of the notification;
 
