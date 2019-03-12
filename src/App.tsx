@@ -1,25 +1,32 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { Component, EventHandler } from 'react';
 import './App.css';
+import addToast from './toast';
 
-class App extends Component {
+interface Props {}
+interface State {
+  message: string;
+}
+
+class App extends Component<Props, State> {
+
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      message: ""
+    }
+  }
+
+  handleTyping: React.ReactEventHandler<HTMLInputElement> = (e) => {
+    this.setState({
+      message: e.currentTarget.value
+    });
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="whole-viewport">
+        <input type="text" id="message" placeholder="Type a message." onChange={this.handleTyping} value={this.state.message} />
+        <input type="button" value="Toast!" onClick={() => addToast(this.state.message)} />
       </div>
     );
   }
