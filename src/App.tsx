@@ -1,5 +1,4 @@
 import React, { Component, EventHandler } from 'react';
-import './App.css';
 import addToast from './toast';
 
 interface Props {}
